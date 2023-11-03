@@ -2,8 +2,6 @@ import streamlit as st
 import openai
 
 # App title
-st.set_page_config(page_title="Tax Assistant")
-
 st.set_page_config(page_title="Tax Assistant", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("Tax Assistant")
 
