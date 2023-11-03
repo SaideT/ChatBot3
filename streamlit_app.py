@@ -24,19 +24,5 @@ if prompt := st.chat_input(disabled=not openai_key):
     with st.chat_message("user"):
         st.write(prompt)
 
-openai.api_key = openai_key
 
-# Function to get the GPT3.5's response
-def get_assistant_response(allmessages):
-    r = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": m["role"], "content": m["content"]} for m in allmessages],
-    )
-    response = r.choices[0].message.content
-    return response
-
-# Display the prior chat messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
 
