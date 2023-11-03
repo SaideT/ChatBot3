@@ -22,6 +22,21 @@ if "messages" not in st.session_state.keys():
 if prompt := st.chat_input(disabled=not openai_key):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
+# Function to get the GPT3.5's response
+def get_assistant_response(messages):
+    r = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": m["role"], "content": m["content"]} for m in messages],
+    )
+    response = r.choices[0].message.content
+    return response
+
+response = get_assistant_response(st.session_state.messages)
+
+newmessage = {"role": "assistant", "content": response}
+
+st.session_state.messages.append(newmessage)
+
 # Display the prior chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
