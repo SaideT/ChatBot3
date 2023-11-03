@@ -1,10 +1,22 @@
 import streamlit as st
-import numpy as np
 import openai
 
 # App title
-st.set_page_config(page_title="Tax ChatBot")
+st.set_page_config(page_title="Tax Assistant")
 
+st.set_page_config(page_title="Tax Assistant", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title("Tax Assistant")
+
+# Sidebar for entering OpenAI key
 with st.sidebar:
-    st.title('Tax ChatBot')
+    st.title('OpenAI key')
+    openai_key = st.text_input('Enter OpenAI key:', type='password')
+    if not openai_key:
+        st.warning('Please enter your OpenAI key!', icon='⚠️')
+    else:
+        st.success('Proceed to entering your prompt message!', icon='👉')
+
+ # Store chat messages, and initialize the chat message history
+if "messages" not in st.session_state.keys():
+    st.session_state.messages = [{"role": "assistant", "content": "Ask me any questions"}]
 
