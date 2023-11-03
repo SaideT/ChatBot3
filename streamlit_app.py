@@ -16,13 +16,17 @@ with st.sidebar:
  # Store chat messages, and initialize the chat message history
 
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "Ask me a question about the 2022 tax return filing!"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Ask me a question"}]
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
+
+# Display the prior chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])    
+
 
 
 
