@@ -15,15 +15,18 @@ with st.sidebar:
         st.success('Proceed to entering your prompt message!', icon='👉')
 
 st.session_state.messages = []
+counter = 0
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
     st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
 
-# Display the prior chat messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
+counter +=1
+    with st.chat_message("assistant"):
+        st.write(counter)
+
 
 
 
