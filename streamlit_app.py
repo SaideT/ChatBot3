@@ -16,8 +16,6 @@ with st.sidebar:
 
 if "messages" not in st.session_state.keys():
     counter = 0
-    
-with st.chat_message("assistant"):
     st.write(counter)
 
 # User-provided prompt
