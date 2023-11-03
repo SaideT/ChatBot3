@@ -16,7 +16,8 @@ with st.sidebar:
 
 if "messages" not in st.session_state.keys():
     counter = 0
-    st.write(counter)
+    with st.chat_message("assistant"):
+        st.write(counter)
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
