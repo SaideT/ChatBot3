@@ -29,6 +29,23 @@ if prompt := st.chat_input(disabled=not openai_key):
     with st.chat_message("user"):
         st.write(prompt)
 
+# Function to get the GPT3.5's response
+def get_assistant_response(allmessages):
+    r = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": m["role"], "content": m["content"]} for m in allmessages],
+    )
+    response = r.choices[0].message.content
+    return response
+
+if len(st.session_state.messages)>1:
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            response = get_assistant_response(st.session_state.messages) 
+            st.write(response)
+
+    newmessage = {"role": "assistant", "content": response}
+    st.session_state.messages.append(newmessage)
 
    
 
