@@ -1,9 +1,8 @@
 import streamlit as st
 import openai
 
-# App title
-st.set_page_config(page_title="Tax Assistant", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
-st.title("Tax Assistant")
+st.set_page_config(page_title="Chat with the Tax Assistant 2022, powered by GPT3.5", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title("Chat with the Tax Assistant 2022, powered by GPT3.5")
 
 # Sidebar for entering OpenAI key
 with st.sidebar:
@@ -18,24 +17,11 @@ with st.sidebar:
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "Ask me a question about the 2022 tax return filing!"}]
 
-openai.api_key = openai_key
-
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
-
-# User-provided prompt
-if prompt := st.chat_input(disabled=not openai_key):
-    st.session_state.messages.append({"role": "user", "content": prompt})
-
-# Display the prior chat messages
-  
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
-        
 
 
 
