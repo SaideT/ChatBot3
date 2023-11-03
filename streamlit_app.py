@@ -14,8 +14,11 @@ with st.sidebar:
     else:
         st.success('Proceed to entering your prompt message!', icon='👉')
 
-st.session_state.messages = []
-counter = 0
+if "messages" not in st.session_state.keys():
+    counter = 0
+    
+with st.chat_message("assistant"):
+    st.write(counter)
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
@@ -23,9 +26,7 @@ if prompt := st.chat_input(disabled=not openai_key):
     with st.chat_message("user"):
         st.write(prompt)
 
-counter +=1
-with st.chat_message("assistant"):
-    st.write(counter)
+
 
 
 
