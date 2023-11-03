@@ -31,9 +31,10 @@ def get_assistant_response(messages):
     response = r.choices[0].message.content
     return response
 
-response = get_assistant_response(st.session_state.messages)
-
-newmessage = {"role": "assistant", "content": response}
+if st.session_state.messages[0]["role"] != "assistant":
+    
+    response = get_assistant_response(st.session_state.messages)
+    newmessage = {"role": "assistant", "content": response}
 
 st.session_state.messages.append(newmessage)
 
