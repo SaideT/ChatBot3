@@ -22,8 +22,16 @@ if "messages" not in st.session_state.keys():
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
+    counter += 1
+
+# Display the prior chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+        
+if counter > 0:
+    with st.chat_message("assistant"):
+        st.write(counter)
 
 
 
