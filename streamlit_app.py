@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+import openai == 0.28.0
 
 st.title('🎈 App Name')
 
