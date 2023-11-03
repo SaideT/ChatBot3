@@ -35,3 +35,8 @@ def get_assistant_response(messages):
     response = r.choices[0].message.content
     return response
 
+# Display the prior chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+
