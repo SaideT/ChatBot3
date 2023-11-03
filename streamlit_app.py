@@ -25,9 +25,10 @@ if prompt := st.chat_input(disabled=not openai_key):
     counter += 1
 
 # Display the prior chat messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
+if "messages" in st.session_state.keys():    
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.write(message["content"])
         
 if counter > 0:
     with st.chat_message("assistant"):
