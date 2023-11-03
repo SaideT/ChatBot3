@@ -14,26 +14,26 @@ with st.sidebar:
     else:
         st.success('Proceed to entering your prompt message!', icon='👉')
 
+ # Store chat messages, and initialize the chat message history
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = []
-    counter = 0
-    with st.chat_message("assistant"):
-        st.write(counter)
+    st.session_state.messages = [{"role": "assistant", "content": "Ask me a question about the 2022 tax return filing!"}]
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not openai_key):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    counter += 1
+    with st.chat_message("user"):
+        st.write(prompt)
+
+# User-provided prompt
+if prompt := st.chat_input(disabled=not openai_key):
+    st.session_state.messages.append({"role": "user", "content": prompt})
 
 # Display the prior chat messages
-if "messages" in st.session_state.keys():    
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
+  
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
         
-if counter > 0:
-    with st.chat_message("assistant"):
-        st.write(counter)
 
 
 
