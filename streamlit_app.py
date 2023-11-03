@@ -18,3 +18,9 @@ with st.sidebar:
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "Ask me any questions"}]
 
+# User-provided prompt
+if prompt := st.chat_input(disabled=not openai_key):
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
