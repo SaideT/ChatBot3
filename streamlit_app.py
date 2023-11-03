@@ -24,8 +24,8 @@ if prompt := st.chat_input(disabled=not openai_key):
         st.write(prompt)
 
 counter +=1
-    with st.chat_message("assistant"):
-        st.write(counter)
+with st.chat_message("assistant"):
+    st.write(counter)
 
 
 
