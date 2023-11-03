@@ -35,8 +35,7 @@ if st.session_state.messages[0]["role"] != "assistant":
     
     response = get_assistant_response(st.session_state.messages)
     newmessage = {"role": "assistant", "content": response}
-
-st.session_state.messages.append(newmessage)
+    st.session_state.messages.append(newmessage)
 
 # Display the prior chat messages
 for message in st.session_state.messages:
