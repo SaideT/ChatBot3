@@ -15,6 +15,7 @@ with st.sidebar:
         st.success('Proceed to entering your prompt message!', icon='👉')
 
 if "messages" not in st.session_state.keys():
+    st.session_state.messages = []
     counter = 0
     with st.chat_message("assistant"):
         st.write(counter)
