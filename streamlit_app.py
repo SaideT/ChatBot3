@@ -41,7 +41,7 @@ def get_assistant_response(allmessages):
 if len(st.session_state.messages)>1:
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = generate_response(st.session_state.messages) 
+            response = get_assistant_response(st.session_state.messages) 
             st.write(response)
 
     newmessage = {"role": "assistant", "content": response}
