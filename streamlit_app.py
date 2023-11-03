@@ -1,5 +1,5 @@
 import streamlit as st
-import openai == 0.28.0
+import hugchat 
 
 st.title('🎈 App Name')
 
