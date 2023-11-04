@@ -1,8 +1,8 @@
 import streamlit as st
 import openai
 
-st.set_page_config(page_title="Tax Assistant", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
-st.title("Tax Assistant")
+st.set_page_config(page_title="TaxPro", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title("TaxPro")
 
 # Sidebar for entering OpenAI key
 with st.sidebar:
