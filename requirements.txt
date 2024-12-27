@@ -2,4 +2,5 @@ streamlit==1.28.1
 openai==1.13.3
 pinecone-client==2.2.2
 langchain==0.0.240
-sentence-transformers==2.2.2
+sentence-transformers==2.4.0
+httpx==0.27.2
